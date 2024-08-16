@@ -1,20 +1,16 @@
-// import { useState } from "react";
+import css from "./Options.module.css";
 
-// const ClickTracker = () => {
-//   const [clicks, setClicks] = useState(0);
-//   const updateClicks = () => {
-//     setClicks(clicks + 1);
-//   };
-
-//   return <button onClick={updateClicks}> {clicks}</button>;
-// };
-
-// export default function Options() {
-//   return (
-//     <div>
-//       <ClickTracker>Good</ClickTracker>
-//       <ClickTracker>Neutral</ClickTracker>
-//       <ClickTracker>Bad</ClickTracker>
-//     </div>
-//   );
-// }
+export default function Options({
+  updateFeedback,
+  resetFeedback,
+  totalFeedback,
+}) {
+  return (
+    <div className={css.options}>
+      <button onClick={() => updateFeedback("good")}>Good</button>
+      <button onClick={() => updateFeedback("neutral")}>Neutral</button>
+      <button onClick={() => updateFeedback("bad")}>Bad</button>
+      {totalFeedback > 0 && <button onClick={resetFeedback}>Reset</button>}
+    </div>
+  );
+}
