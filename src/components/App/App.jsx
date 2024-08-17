@@ -29,17 +29,12 @@ export default function App() {
   };
 
   const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
-  const positiveFidback =
+  const positiveFeedback =
     totalFeedback > 0 ? Math.round((feedback.good / totalFeedback) * 100) : 0;
 
   useEffect(() => {
     window.localStorage.setItem("updateFeedback", JSON.stringify(feedback));
   }, [feedback]);
-
-  useEffect(() => {
-    window.localStorage.setItem("totalFeedback", totalFeedback);
-    window.localStorage.setItem("positiveFeedback", positiveFidback);
-  }, [totalFeedback, positiveFidback]);
 
   return (
     <div className={css.container}>
@@ -53,7 +48,7 @@ export default function App() {
         <Feedback
           feedback={feedback}
           totalFeedback={totalFeedback}
-          positiveFidback={positiveFidback}
+          positiveFeedback={positiveFeedback}
         />
       ) : (
         <Notification />
